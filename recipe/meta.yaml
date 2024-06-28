@@ -13,7 +13,11 @@ build:
   entry_points:
     - casq = casq.celldesigner2qual:main
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    # handle interaction between hatch and conda-smithy's .gitignore
+    - echo "[tool.hatch.build.targets.wheel]"   >> pyproject.toml
+    - echo "ignore-vcs = true"                  >> pyproject.toml
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
