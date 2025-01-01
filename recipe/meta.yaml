@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/casq-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/casq-{{ version }}.tar.gz
   sha256: 880f1d090d99e4b347d4fbe77545228d2e67dbd85ffaee8c06e8201239d1fefb
 
 build:
@@ -18,15 +18,15 @@ build:
     - echo "[tool.hatch.build.targets.wheel]"   >> pyproject.toml
     - echo "ignore-vcs = true"                  >> pyproject.toml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - hatchling >=1.5.0
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - loguru >=0.2.5
     - networkx >=2.2
 
@@ -38,6 +38,7 @@ test:
     - casq --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://soliman.gitlabpages.inria.fr/casq/
