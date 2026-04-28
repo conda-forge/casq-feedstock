@@ -1,5 +1,5 @@
 {% set name = "casq" %}
-{% set version = "1.4.3" %}
+{% set version = "1.4.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/casq-{{ version }}.tar.gz
-  sha256: 6736d348244826d1f625b539f74e5337a005c41bb3afdddf00244e0afd52253d
+  sha256: f5758796e7c7af980c15e859b6cf04c734ca5e93e1fa6a26ea276320dce48b94
 
 build:
   entry_points:
